@@ -10,6 +10,7 @@ import { StarComponent } from './shared/star.component';
 import { HeaderComponent } from './header/header.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { CourseDetailGuard } from './courses/course-detail/course-detail.guard';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CourseDetailComponent } from './courses/course-detail/course-detail.com
     StarComponent,
     HeaderComponent,
     WelcomeComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    CourseDetailGuard
   ],
   imports: [
     BrowserModule,
@@ -27,10 +29,11 @@ import { CourseDetailComponent } from './courses/course-detail/course-detail.com
     HttpClientModule,
     RouterModule.forRoot([
       {path: 'welcome', component: WelcomeComponent },
-      {path: 'courses', component: CourseListComponent}, 
+      {path: 'courses', component: CourseListComponent},
+      {path: 'courses/:id', 
+       canActivate: [CourseDetailGuard], component: CourseDetailComponent }, 
       {path: '', redirectTo: 'welcome', pathMatch: 'full'},
       {path: '**', redirectTo: 'welcome', pathMatch: 'full'},
-
     ])
   ],
   providers: [],
