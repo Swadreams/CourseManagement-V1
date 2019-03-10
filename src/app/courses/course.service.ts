@@ -15,7 +15,7 @@ export class CourseService {
   }
 
   getCourses(): Observable<ICourse[]>  {
-    return this.http.get(this.url);
+    return this.http.get<ICourse[]>(this.url);
               //  .pipe(
               //    tap(response => console.log(response)),
               //    catchError(this.errorHandling)
