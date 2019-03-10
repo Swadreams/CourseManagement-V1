@@ -9,6 +9,7 @@ import { CourseListComponent } from './courses/course-list/course-list.component
 import { StarComponent } from './shared/star.component';
 import { HeaderComponent } from './header/header.component';
 import { WelcomeComponent } from './home/welcome.component';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { WelcomeComponent } from './home/welcome.component';
     CourseListComponent,
     StarComponent,
     HeaderComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,
