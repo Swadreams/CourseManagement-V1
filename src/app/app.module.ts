@@ -19,8 +19,7 @@ import { CourseDetailGuard } from './courses/course-detail/course-detail.guard';
     StarComponent,
     HeaderComponent,
     WelcomeComponent,
-    CourseDetailComponent,
-    CourseDetailGuard
+    CourseDetailComponent,    
   ],
   imports: [
     BrowserModule,
