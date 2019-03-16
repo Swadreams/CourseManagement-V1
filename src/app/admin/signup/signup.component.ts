@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { SpaceValidator } from './space.validator';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +9,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
-  constructor() { }
+  form;
+
+  constructor(fb: FormBuilder) { 
+      this.form = fb.group({
+        account : fb.group({
+          email: ['',
+            [
+              Validators.required,
+            Validators.minLength(3),
+              SpaceValidator.cannotContainSpace
+            ]           
+          ],
+          password: new FormControl('', Validators.required),
+        })   
+      })
+  }
 
   ngOnInit() {
+  }
+
+  // form = new FormGroup({
+  //   account : new FormGroup({
+  //     email: new FormControl('', [
+  //       Validators.required,
+  //       Validators.minLength(3),
+  //       SpaceValidator.cannotContainSpace
+  //     ]),
+  //     password: new FormControl('', Validators.required),
+  //   }),    
+  // })
+
+  log() {
+    console.log('test');
+  }
+
+  get username() {
+    return this.form.get('account.email');
+  }
+
+  registration() {
+    console.log(this.form);
+
+    //Suppose we are getting error on registration.
+
+    this.form.setErrors({
+      invalidForm: true
+    })
   }
 
 }
