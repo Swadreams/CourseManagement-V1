@@ -12,7 +12,7 @@ export class CourseDetailGuard implements CanActivate {
   
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot) : boolean{
    
     let id = +next.url[1].path;
     

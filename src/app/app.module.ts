@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 // import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 import { AppComponent } from './app.component';
 import { CourseListComponent } from './courses/course-list/course-list.component';
 import { StarComponent } from './shared/star.component';
@@ -24,6 +27,7 @@ import { CourseDetailGuard } from './courses/course-detail/course-detail.guard';
   imports: [
     BrowserModule,
     //AppRoutingModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
