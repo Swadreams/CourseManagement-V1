@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from 'src/app/shared/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,17 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor() { }
+  error;
+  constructor(private auth: FirebaseService, private router: Router) { }  
 
   ngOnInit() {
   }
 
-  log(x) {
-    console.log(x);
+  log() {
+    this.error = false;
   }
 
   login(form) {
-    console.log('Login form ', form.value);
+    this.error = false;
+    this.auth.login(form.value).then(
+        response => {
+          this.router.navigate(['/courses']);
+        },
+        error => {
+         this.error = true;
+        }
+    )
   }
+
+  logout() {}
 }

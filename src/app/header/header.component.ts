@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FirebaseService } from '../shared/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  @Input() userLoggedIn: boolean;
 
-  constructor() { }
+  constructor(private auth : FirebaseService, private router: Router) { }
 
-  ngOnInit() {
+  ngOnInit() {   
+    console.log('Recieved input for logged in: ', this.userLoggedIn); 
   }
+
+  logout() {
+    this.auth.logout()
+        .then(response => {
+          console.log('logout response : ',response);
+          this.router.navigate(['/login']);
+        },
+              error => console.log(error)
+        )
+  }  
 
 }

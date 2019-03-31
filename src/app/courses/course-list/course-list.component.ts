@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ICourse } from '../course';
 import { CourseService } from '../course.service';
 
@@ -31,7 +31,7 @@ export class CourseListComponent implements OnInit {
   constructor(private courseService: CourseService) {    
   }
 
-  ngOnInit() {
+  ngOnInit() {    
     //this.courses = this.courseService.getCourses();
     this.courseService.getCourses()
         .subscribe(
@@ -45,7 +45,7 @@ export class CourseListComponent implements OnInit {
             this.errorMessage = "Unknown error occurred.";
           }
         )    
-  }
+  }  
 
   showImage() {
     this.imageVisible = !this.imageVisible;

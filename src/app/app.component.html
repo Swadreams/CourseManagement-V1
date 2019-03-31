@@ -1,5 +1,5 @@
 <div class="container" [@slideInAnimation]="o.isActivated ? o.activatedRoute : '' ">
-<app-header></app-header>
+<app-header [userLoggedIn]="isUserLoggedIn"></app-header>
 
 <router-outlet #o="outlet"></router-outlet>
 
